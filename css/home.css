@@ -1360,6 +1360,13 @@ a:hover {
     align-items: center;
 }
 
+.coverage-map img {
+    width: 100%;       /* riempie tutto il box in larghezza */
+    height: 100%;      /* riempie tutto il box in altezza */
+    object-fit: cover; /* evita distorsioni */
+}
+
+
 
 /* Media Query per Mobile */
 @media (max-width: 768px) {
@@ -1875,6 +1882,12 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
+.quality-image img {
+    width: 100%;       /* riempie tutto il box in larghezza */
+    height: 100%;      /* riempie tutto il box in altezza */
+    object-fit: cover; /* evita distorsioni */
+}
+
 
 .quality-text .section-subtitle {
     text-align: left;
