@@ -1954,7 +1954,19 @@ a:hover {
   cursor: pointer;
 }
 
+/* === CORREZIONE MENU MOBILE === */
 @media (max-width: 900px) {
+
+  /* forza il menu a uscire sopra gli altri elementi */
+  .header {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .header-bottom {
+    position: relative;
+  }
+
   .navbar {
     display: none;
     position: absolute;
@@ -1964,25 +1976,26 @@ a:hover {
     background: #fff;
     flex-direction: column;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 2000; /* più alto di tutto */
   }
 
   .navbar.active {
-    display: flex;
+    display: flex !important; /* forza la visibilità */
   }
 
   .navbar ul {
-    flex-direction: column;
+    list-style: none;
     margin: 0;
-    padding: 1rem 0;
+    padding: 0;
   }
 
-  .navbar ul li {
-    margin: 0.5rem 0;
+  .navbar li {
+    margin: 0;
+    border-bottom: 1px solid #eee;
   }
 
-  .navbar ul li a {
+  .navbar li a {
     display: block;
     padding: 1rem;
     color: #333;
@@ -1990,11 +2003,18 @@ a:hover {
     font-weight: 600;
   }
 
-  .menu-toggle {
-    display: block;
+  .navbar li a:hover {
+    background: #f8f8f8;
   }
 
-  body.menu-open {
-    overflow: hidden;
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 3000;
   }
 }
+
