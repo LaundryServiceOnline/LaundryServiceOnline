@@ -1,0 +1,1933 @@
+/* Generali */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2B6CB0; /* Blu scuro */
+}
+
+a {
+    text-decoration: none;
+    color: #4FD1C5; /* Blu chiaro */
+}
+
+a:hover {
+    color: #2B6CB0;
+}
+
+/* Bottoni */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #4FD1C5; /* Blu chiaro */
+    color: #fff;
+    border: 2px solid #4FD1C5;
+}
+
+.btn-primary:hover {
+    background-color: #83b5eb; /* Blu scuro */
+    border-color: #2B6CB0;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #83b5eb; /* Blu scuro */
+    border: 2px solid #2B6CB0;
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: #2B6CB0;
+    color: #fff;
+}
+
+.btn-light { /* Per CTA nella sezione bianca */
+    background-color: #fff;
+    color: #2B6CB0;
+    border: 2px solid #fff;
+}
+
+.btn-light:hover {
+    background-color: #edf2f7; /* Un grigio molto chiaro */
+}
+
+.btn-tertiary { /* Per le card dei servizi */
+    background-color: #81E6D9; /* Verde acqua */
+    color: #2B6CB0;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+.btn-tertiary:hover {
+    background-color: #4FD1C5;
+    color: #fff;
+}
+
+
+/* Header */
+.header {
+    background-color: #fff;
+    padding: 0; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    overflow: visible; /* CRUCIALE: Permette al logo di "sforare" */
+    height: auto; 
+}
+
+/* Nuova riga superiore: Logo e Toggle */
+.header-top {
+    display: flex;
+    justify-content: center; /* Centra il logo orizzontalmente */
+    align-items: center;
+    padding: 20px 0 0; 
+    position: relative; /* CRUCIALE: Ancoraggio per il logo assoluto */
+}
+
+/* ⭐ AGGIUNTO: Contenitore del Logo */
+.logo {
+    /* Definisce l'altezza minima dell'area del logo nell'header */
+    height: 70px; 
+    width: 100%; 
+    text-align: center; 
+    position: relative; /* Ancoraggio per l'immagine assoluta */
+}
+
+/* ⭐ AGGIUNTO: Regole per ingrandire il logo e farlo sporgere */
+.logo img {
+    position: absolute; /* Rimuove l'immagine dal flusso normale */
+    
+    /* Centra orizzontalmente l'immagine assoluta */
+    left: 50%;
+    transform: translateX(-50%); 
+
+    /* Dimensionamento e Posizionamento */
+    height: 160px; /* Altezza ingrandita */
+    top: -35px; /* Sposta l'immagine sopra il bordo dell'header */
+    
+    z-index: 10; /* Assicura che sia sopra gli altri elementi */
+}
+
+/* Nascondiamo il menu-toggle su desktop e lo spostiamo di lato se necessario (utile per il mobile) */
+.menu-toggle {
+    display: none; /* Nascondi su desktop */
+    position: absolute; 
+    right: 20px; /* Posizione a destra del container */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2B6CB0;
+    z-index: 1001;
+}
+
+/* Nuova riga inferiore: Navbar */
+.header-bottom {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente la navbar */
+    padding: 15px 0 20px; 
+}
+
+/* La tua navbar originale e le sue proprietà */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbar {
+    /* Assicurati che il contenitore della navbar abbia una posizione per usare z-index */
+    position: relative; 
+    /* Imposta uno z-index superiore a quello del logo (che è 10) */
+    z-index: 15; 
+}
+
+/* Le regole di stile per <li> e <a> rimangono le stesse */
+.navbar ul li {
+    margin: 0 15px; /* Spazio uniforme tra i link */
+}
+
+.navbar ul li a {
+    color: #333;
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+/* ... (Mantenere gli stili per :hover e .active) ... */
+
+
+/* Media Query per Mobile (IMPORTANTE: Visualizza il toggle e nascondi la navbar) */
+@media (max-width: 992px) {
+    .header {
+        height: auto; 
+    }
+    
+    /* Regola per il logo ingrandito su mobile */
+    .logo img {
+        height: 90px; /* Riduci l'altezza su mobile */
+        top: 0; /* Riportalo in linea con l'header */
+        position: static; /* Deve tornare nel flusso per non interferire con il toggle */
+        transform: none;
+    }
+    
+    .header-top {
+        justify-content: space-between; 
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    /* Mostra il toggle e nascondi il toggle-desktop */
+    .menu-toggle {
+        display: block; 
+        position: static;
+        transform: none;
+    }
+
+    /* Nascondi la navbar di default e mettila a larghezza piena per il menu mobile */
+    .header-bottom {
+        display: none;
+        padding: 0;
+    }
+    
+    /* Gestione apertura menu (richiede il JS che hai già) */
+    .navbar.active {
+        display: block; 
+        width: 100%;
+        text-align: center;
+    }
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar ul li {
+        margin: 10px 0;
+    }
+}
+
+/* Hero Section */
+/* Stili della Sezione Hero */
+.hero {
+    position: relative;
+    /* AGGIORNATO: Aggiunge un overlay scuro sopra l'immagine per migliorare la leggibilità del testo bianco */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                url('../img/ImgBg.jpg') no-repeat center center/cover;
+    /* La riga sopra sostituisce le tre righe di background precedenti e aggiunge l'overlay */
+    
+    background-size: cover;
+    background-position: center;
+    
+    height: 100vh; /* Altezza schermo intero */
+    display: flex;
+    align-items: center; /* Centra verticalmente il contenuto del .container */
+    color: white;
+    overflow: hidden;
+    /* AGGIUNTA: Aggiungo padding in modo che il contenuto non tocchi i bordi laterali */
+    padding: 0 20px; 
+}
+
+/* Stili del Contenitore Immediato (se usi un div.container all'interno di .hero) */
+.hero .container {
+    position: relative;
+    z-index: 10; /* Assicura che il contenuto sia sopra l'overlay */
+    width: 100%; /* Occupa la larghezza massima del container */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #fdfdfd;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Ombra più scura per risalto */
+    text-align: left;
+    margin-left: 0; 
+    margin-right: auto;
+    /* AGGIUNTO: Un po' di padding per staccarsi dal bordo del container */
+    padding-right: 20px; 
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 650px; /* Riduci max-width per focalizzare il testo */
+    text-align: left;
+    margin-left: 0; 
+    margin-right: auto;
+    padding-right: 20px; 
+}
+
+/* AGGIUNTO: Stile per i pulsanti (supponendo che siano nel div.hero-actions) */
+.hero .hero-actions a {
+    margin-right: 15px; /* Spazio tra i pulsanti */
+}
+
+/* Media Query (Esempio, per garantire la leggibilità su mobile) */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Riduci l'altezza su mobile */
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        text-align: center; /* Centra il testo su schermi piccoli */
+    }
+    .hero p {
+        font-size: 1rem;
+        text-align: center; /* Centra la descrizione su schermi piccoli */
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero .hero-actions {
+        text-align: center; /* Centra i pulsanti su schermi piccoli */
+    }
+    .hero .hero-actions a {
+        display: block; /* Metti i pulsanti uno sotto l'altro */
+        margin: 10px auto;
+    }
+}
+
+/* Features Section */
+.features {
+    padding: 60px 0;
+    background-color: #f8fcfb; /* Un colore leggermente staccato dal bianco puro */
+    text-align: center;
+}
+
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-item i {
+    font-size: 3rem;
+    color: #4FD1C5;
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Services Overview Section */
+/* Sezione Servizi con Galleria Immagini */
+/* Stili della Sezione Servizi */
+.services-overview {
+    padding: 0; /* Rimuovi il padding della sezione per permettere l'espansione */
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.services-overview h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* 1. ESPANSIONE A TUTTA LA LARGHEZZA DEL VIEWPORT */
+.image-gallery {
+    display: flex;
+    /* Rimuoviamo il margine per evitare conflitti */
+    margin: 0; 
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow: hidden;
+    
+    /* Le regole chiave per l'espansione a tutta larghezza (100vw) */
+    width: 100vw; 
+    position: relative; 
+    left: 50%; 
+    transform: translateX(-50%); 
+
+    height: 450px; 
+    border-radius: 0; /* Rimuovi angoli arrotondati */
+}
+
+.gallery-item {
+    position: relative;
+    width: 33.333%; 
+    height: 100%; /* Prendiamo l'altezza di 450px dal genitore */
+    min-width: 0;
+    overflow: hidden;
+    /* Rimuoviamo l'ombra dai singoli item per una fascia pulita */
+    box-shadow: none; 
+    cursor: pointer;
+    transition: filter 0.5s ease, transform 0.3s ease; 
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Stili per l'Overlay: mostra dettagli e descrizione (nessun cambiamento) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.overlay-content {
+    color: white;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.overlay-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.overlay-content p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* 1. Al hover sull'elemento: Mostra overlay, Ingrandisci l'immagine */
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .overlay-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.9);
+}
+
+/* 2. EFFETTO SFUOCATURA/INGRANDIMENTO SU TUTTA LA GALLERIA */
+.image-gallery:hover .gallery-item {
+    filter: blur(5px);
+    transform: scale(1);
+}
+
+.image-gallery .gallery-item:hover {
+    filter: none;
+    /* Riduciamo leggermente l'ingrandimento per evitare che "esca" troppo dalla fascia */
+    transform: scale(1.02); 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+/* 3. STILI PER IL PULSANTE CENTRATO */
+.button-area {
+    text-align: center; /* Centra l'elemento inline */
+    margin-top: 60px; /* Spazio sotto la galleria e sopra il pulsante */
+}
+
+.button-area .btn-primary {
+    display: inline-block; /* Per centrare l'elemento */
+}
+
+
+/* Media Queries per adattabilità */
+@media (max-width: 992px) {
+    /* Manteniamo la logica base, ma su schermi più larghi di 768px la galleria si espande comunque */
+}
+
+@media (max-width: 768px) {
+.image-gallery {
+        flex-direction: column;
+        width: 100%;
+        position: static;
+        transform: none;
+        height: auto; /* Torna ad altezza automatica in colonna su mobile */
+        margin: 0;
+    }
+    .gallery-item {
+        width: 100%;
+        height: 300px; /* Altezza fissa su mobile per leggibilità */
+    }
+    /* Rimuoviamo l'effetto blur su mobile */
+    .image-gallery:hover .gallery-item {
+        filter: none;
+        transform: scale(1);
+    }
+    .image-gallery .gallery-item:hover {
+        transform: scale(1.01); /* Ridotto ingrandimento su mobile */
+    }
+
+    .button-area {
+        margin-top: 30px;
+    }
+}
+
+
+/* CTA Section */
+.cta-section {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cta-heading {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c2c2c;
+}
+
+.cta-subtext {
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Utilità */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .features .container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .service-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .cta-section h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* Altezza dell'header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 20px 0;
+    }
+    .header .navbar.active {
+        display: flex;
+    }
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar ul li {
+        margin: 10px 0;
+    }
+    .menu-toggle {
+        display: block; /* Mostra il toggle su mobile */
+    }
+
+    .hero {
+        padding: 80px 15px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .btn-secondary {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .features .container {
+        grid-template-columns: 1fr;
+    }
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+    .cta-section p {
+        font-size: 0.95rem;
+    }
+}
+ .footer {
+    background-color: #2B6CB0; /* blu scuro */
+    color: #e0f7f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 3rem 1rem 1.5rem;
+    user-select: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-col {
+    line-height: 1.6;
+  }
+
+  .footer-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4FD1C5; /* blu chiaro */
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-about .desc {
+    margin-bottom: 1rem;
+    color: #c1f0eb;
+    font-size: 0.95rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #81E6D9; /* verde acqua */
+    margin: 1rem 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #81E6D9; /* verde acqua */
+    letter-spacing: 0.08em;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul li {
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  ul li a {
+    color: #c1f0eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  ul li a:hover,
+  ul li a:focus {
+    color: #4FD1C5;
+    outline: none;
+  }
+
+  ul li i {
+    margin-right: 0.6rem;
+    color: #4FD1C5;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #4FD1C5;
+    color: #2B6CB0;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-icon:hover,
+  .social-icon:focus {
+    background-color: #81E6D9;
+    color: #1b3c6d;
+    outline: none;
+  }
+
+  /* Footer bottom */
+  .footer-bottom {
+    border-top: 1px solid #4FD1C5;
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #a4d7d4;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    flex: 1 1 250px;
+  }
+
+.footer-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra tutto orizzontalmente */
+  gap: 0.5rem;
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+.footer-bottom-right span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #c1f0eb;
+}
+
+/* Logo */
+.producer-logo {
+  max-height: 75px;
+  height: 75px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+  margin-top: 0.3rem;
+    transform: translateY(-40px); /* sposta il logo più in alto */
+}
+
+.producer-logo:hover,
+.producer-logo:focus {
+  filter: brightness(0.7) invert(0.8);
+  outline: none;
+}
+
+
+  .legal-links {
+    display: flex;
+    gap: 1.5rem;
+    flex: 1 1 250px;
+    justify-content: flex-end;
+  }
+
+  .legal-links a {
+    color: #c1f0eb;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .legal-links a:hover,
+  .legal-links a:focus {
+    color: #4FD1C5;
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-bottom {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+    .footer-bottom-right {
+      align-items: center;
+      order: 2;
+    }
+    .legal-links {
+      justify-content: center;
+      order: 3;
+    }
+  }
+  
+
+  /*------------------CHISIAMO SECTION------------------------------*/
+  /* ==================================== */
+/* 🧼 SEZIONE CHI SIAMO (ABOUT) STILE MODERNO */
+/* ==================================== */
+
+.about-section {
+    padding: 80px 0;
+    background-color: #f8f8f8; /* Sfondo leggermente grigio per staccare */
+}
+
+.centered-container {
+    width: 90%;
+    max-width: 1200px; /* Larghezza massima al centro */
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2c3e50; /* Blu scuro/antracite per un look professionale */
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #4FD1C5; /* Colore accento */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Layout a Griglia (Desktop) */
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 2/3 testo | 1/3 immagine */
+    gap: 60px;
+    align-items: start;
+}
+
+.intro-paragraph, .description-paragraph {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.highlight-text {
+    font-weight: 700;
+    color: #2B6CB0; /* Blu scuro (colore primario) */
+}
+
+/* Punti Chiave */
+.key-points-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.key-points-list {
+    list-style: none;
+    padding: 0;
+}
+
+.key-points-list li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.check-icon {
+    color: #4FD1C5; /* Colore accento */
+    font-size: 1.1em;
+    margin-right: 10px;
+    margin-top: 3px; /* Allineamento visivo */
+}
+
+/* Blocco Immagine/Info a Lato */
+.grid-image-box {
+    position: sticky; /* L'immagine rimane visibile mentre si scorre il testo */
+    top: 100px; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding-bottom: 15px; /* Spazio per la didascalia */
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Dichiarazione di Missione */
+.mission-statement {
+    margin-top: 40px;
+    padding: 20px;
+    border-left: 5px solid #2B6CB0; /* Bordo blu come accento */
+    background-color: #e9f5ff; /* Sfondo molto chiaro */
+    border-radius: 4px;
+}
+
+.note-text {
+    margin: 0;
+    font-style: italic;
+    color: #333;
+    font-size: 1em;
+}
+
+
+/* Media Queries per Mobile/Tablet */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Su schermi piccoli, torna a colonna singola */
+        gap: 40px;
+    }
+    
+    .grid-image-box {
+        position: static; /* Rimuovi lo sticky su mobile */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 2em;
+    }
+    .about-section {
+        padding: 50px 0;
+    }
+}
+
+/* Assicura che l'underline sia subito visibile per la pagina corrente */
+.navbar ul li a.active::after {
+    width: 100%; /* L'underline si espande al 100% immediatamente */
+}
+
+.navbar ul li a.active {
+    /* Stile per la pagina CORRENTE */
+    color: #4FD1C5; 
+    font-weight: 700;
+}
+/*--------------------------SERVIZI SECTION-----------------------*/
+
+/* ==================================== */
+/* 🧺 SEZIONE SERVIZI (PAGINA SERVIZI.HTML) - FASCIA CON HOVER REVEAL */
+/* ==================================== */
+
+.services-page {
+    padding-top: 60px; /* Spazio superiore della sezione */
+    padding-bottom: 60px; /* Spazio inferiore della sezione */
+    background-color: #f8f8f8; /* Sfondo generale della pagina servizi */
+}
+
+/* Stile per Titolo e Descrizione Generale della Pagina */
+.services-page .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2c3e50; 
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.services-page .section-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 70px; /* Spazio maggiore sotto la descrizione generale */
+}
+
+/* Stile Base per ogni Fascia di Servizio */
+.service-band {
+    height: 450px; /* Altezza fissa delle fasce */
+    display: flex;
+    align-items: center; /* Centra verticalmente il contenuto */
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    margin-bottom: 40px; /* Spazio tra le fasce */
+    position: relative;
+    color: white; /* Colore testo predefinito */
+    overflow: hidden; /* Nasconde ciò che esce dai bordi */
+    cursor: pointer; /* Cambia cursore per indicare interattività */
+    border-radius: 10px; /* Angoli leggermente arrotondati */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Ombra leggera per profondità */
+}
+
+/* Immagine di Sfondo (Pseudo-elemento per l'animazione) */
+.service-band::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* AGGIORNATO: Aggiunta transizione anche per il filtro (blur) */
+    transition: transform 0.6s ease, filter 0.4s ease; 
+    z-index: 0; /* Dietro a tutto */
+    /* AGGIUNTO: Nessun blur all'inizio */
+    filter: blur(0px); 
+}
+
+/* Overlay Iniziale (Ora più leggero) */
+.service-band::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* AGGIORNATO: Overlay più leggero (da 0.9 a 0.7) */
+    background: rgba(0, 0, 0, 0.7); 
+    transition: background-color 0.4s ease; /* Animazione fluida dell'overlay */
+    z-index: 1; /* Sopra l'immagine, sotto il testo */
+}
+
+/* Contenuto di Testo (Inizialmente Nascosto/Trasparente) */
+.service-content {
+    position: relative;
+    z-index: 2; /* Sopra l'overlay */
+    text-align: center;
+    opacity: 0; /* TESTO INIZIALMENTE INVISIBILE */
+    transform: translateY(20px); /* Testo leggermente spostato verso il basso */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animazione del testo */
+    max-width: 80%; /* Larghezza massima del blocco testo */
+}
+
+.text-box {
+    /* Box trasparente attorno al testo per focalizzare */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+}
+
+.band-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em; /* Titolo più grande per maggiore impatto */
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.band-subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Stile del bottone */
+.btn-band {
+    display: inline-block;
+    padding: 14px 35px; /* Bottone più grande */
+    background-color: #4FD1C5; /* Colore accento */
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombra per il bottone */
+}
+
+.btn-band:hover {
+    background-color: #38b2ac;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- EFFETTO HOVER ATTIVO ---------- */
+.service-band:hover::before {
+    /* L'overlay si schiarisce ancora di più (opacità 0.4) */
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.service-band:hover::after {
+    /* AGGIUNTO: Applicazione del filtro di sfocatura */
+    filter: blur(4px); 
+    transform: scale(1.08); /* L'immagine fa un leggero zoom */
+}
+
+.service-band:hover .service-content {
+    opacity: 1; /* IL TESTO DIVENTA COMPLETAMENTE VISIBILE */
+    transform: translateY(0); /* Il testo torna alla sua posizione originale (effetto slide-up) */
+}
+/* ------------------------------------------- */
+
+
+/* FASCE SPECIFICHE: Immagini di Sfondo */
+/* I percorsi rimangono uguali */
+
+.service-band-hotel::after {
+    background-image: url('../img/serv1.webp'); /* Percorso immagine Hotel */
+}
+
+.service-band-food::after {
+    background-image: url('../img/sala-punta-romana.jpg'); /* Percorso immagine Ristorante */
+}
+
+.service-band-health::after {
+    background-image: url('../img/strutture_sanitarie.webp'); /* Percorso immagine Sanitarie */
+}
+
+
+/* Media Query per Mobile (Adattamento per schermi piccoli) */
+@media (max-width: 768px) {
+    .service-band {
+        height: 280px; /* Altezza ridotta su mobile */
+        margin-bottom: 25px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Su mobile, il testo è sempre visibile per usabilità */
+    .service-content {
+        opacity: 1; 
+        transform: translateY(0);
+        max-width: 90%;
+    }
+    
+    /* Regola l'overlay per essere meno scuro di default su mobile */
+    .service-band::before {
+        background-color: rgba(0, 0, 0, 0.5); 
+    }
+    
+    /* Disabilita gli effetti hover che non sono utili su touch screen */
+    .service-band:hover::before,
+    .service-band:hover::after,
+    .service-band:hover .service-content {
+        background-color: rgba(0, 0, 0, 0.5); 
+        transform: none; /* Nessun zoom o slide-up on hover */
+        filter: blur(0px); /* Niente blur su mobile */
+        opacity: 1;
+    }
+
+    .band-title {
+        font-size: 2em;
+    }
+    .band-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+    .btn-band {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+}
+
+/* ==================================== */
+/* 🚚 PAGINA LOGISTICA (logistica.html) */
+/* ==================================== */
+
+/* Stile Hero Iniziale */
+.logistics-hero {
+    padding: 100px 0 50px;
+    background-color: #f4f4f4;
+}
+
+.logistics-hero .page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2B6CB0; /* Usa il colore principale */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logistics-hero .intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------- */
+/* 📈 SEZIONE PROCESSO LOGISTICO (Grid) */
+/* ------------------------------------- */
+
+.logistics-process {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.logistics-process .section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.step {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: #4FD1C5; /* Colore accento */
+    border-radius: 50%;
+    color: white;
+    font-size: 2.2em;
+    margin: 0 auto 15px;
+    box-shadow: 0 5px 10px rgba(79, 209, 197, 0.4);
+}
+
+.step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2B6CB0;
+    margin-bottom: 10px;
+}
+
+.step-description {
+    font-size: 1em;
+    color: #666;
+}
+
+
+/* ------------------------------------- */
+/* 🗺️ SEZIONE COPERTURA (Mappa e Testo) */
+/* ------------------------------------- */
+
+.logistics-coverage {
+    padding: 70px 0;
+    background-color: #f4f4f4;
+}
+
+.logistics-coverage .section-subtitle {
+    /* (Usa lo stesso stile del processo logistico) */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.coverage-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.coverage-text {
+    flex: 1; /* Occupa il 50% */
+}
+
+.coverage-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.coverage-text ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.coverage-text ul li {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #444;
+}
+
+.coverage-text ul li i {
+    color: #4FD1C5; /* Accento Ciano */
+    margin-right: 10px;
+}
+
+.coverage-map {
+    flex: 1; /* Occupa l'altro 50% */
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 350px;
+    display: flex; /* Per centrare l'immagine/placeholder */
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Media Query per Mobile */
+@media (max-width: 768px) {
+    .logistics-hero .page-title {
+        font-size: 2.5em;
+    }
+    
+    .process-steps {
+        /* Torna a una colonna singola su mobile, il minmax lo gestisce */
+        grid-template-columns: 1fr; 
+    }
+    
+    .logistics-coverage .section-subtitle {
+        font-size: 1.8em;
+    }
+
+    .coverage-grid {
+        flex-direction: column; /* Impila testo e mappa */
+    }
+
+    .coverage-text, .coverage-map {
+        flex: auto;
+        width: 100%;
+    }
+    
+    .coverage-map {
+        order: -1; /* Mappa in alto su mobile */
+        margin-bottom: 20px;
+    }
+    
+    .coverage-text ul li {
+        font-size: 1em;
+    }
+}
+.btn-primary {
+    display: inline-block;
+    padding: 15px 35px; /* Bottone più grande per enfasi */
+    
+    /* Colori forti: Accento Ciano su Sfondo Chiaro */
+    background-color: #4FD1C5; 
+    color: white; 
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #4FD1C5; /* Bordo per profondità */
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    /* Effetto Hover: cambio colore per feedback */
+    background-color: #38b2ac; /* Tonalità di Ciano leggermente più scura */
+    border-color: #38b2ac;
+    transform: translateY(-2px); /* Leggero sollevamento */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================== */
+/* 🛍️ PAGINA CATALOGO (catalogo.html) */
+/* ==================================== */
+
+/* Stile Hero Iniziale (uguale alla Logistica) */
+.catalog-hero {
+    padding: 100px 0 50px;
+    background-color: #f4f4f4;
+}
+
+.catalog-hero .page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2B6CB0; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.catalog-hero .intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------- */
+/* 📦 SEZIONE CATEGORIA E GRIGLIA PRODOTTI */
+/* ------------------------------------- */
+
+.catalog-category {
+    padding: 50px 0;
+    /* Alterniamo lo sfondo per separare visivamente le categorie */
+    background-color: #fff;
+}
+
+.catalog-category:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.category-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #4FD1C5; /* Linea di accento */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.category-title i {
+    color: #2B6CB0;
+    margin-right: 10px;
+}
+
+.product-grid {
+    display: grid;
+    /* Griglia con 3 colonne su desktop, si adatta al contenuto */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-image-placeholder {
+    height: 200px; /* Altezza per le immagini */
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2B6CB0;
+    margin: 0 15px 10px;
+}
+
+.product-description {
+    font-size: 0.95em;
+    color: #666;
+    margin: 0 15px 20px;
+}
+
+.btn-product {
+    display: block;
+    padding: 12px;
+    background-color: #4FD1C5; 
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-product:hover {
+    background-color: #38b2ac;
+}
+
+/* ------------------------------------- */
+/* 📞 SEZIONE CHIAMATA ALL'AZIONE (CTA) */
+/* ------------------------------------- */
+
+.call-to-action {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #2c3e50; /* Sfondo scuro per contrasto */
+    color: white;
+}
+
+.call-to-action p {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Usiamo lo stile del .btn-primary definito in precedenza, ma con colori invertiti se necessario */
+.call-to-action .btn-primary {
+    /* Mantieniamo lo stile del bottone primario */
+}
+
+
+/* Media Query per Mobile */
+@media (max-width: 768px) {
+    .catalog-hero .page-title {
+        font-size: 2.5em;
+    }
+
+    .category-title {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .product-grid {
+        /* Torna ad una singola colonna su mobile, il minmax lo gestisce */
+        grid-template-columns: 1fr; 
+    }
+    
+    .product-card {
+        margin: 0 auto;
+    }
+    
+    .call-to-action p {
+        font-size: 1.2em;
+    }
+}
+
+/* ==================================== */
+/* 📞 PAGINA CONTATTI (contatti.html)   */
+/* ==================================== */
+
+/* Stile Hero (simili alle altre pagine) */
+.contact-hero {
+    padding: 100px 0 50px;
+    background-color: #f4f4f4;
+}
+
+.contact-hero .page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2B6CB0; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-hero .intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------- */
+/* 📝 SEZIONE PRINCIPALE: Info + Form */
+/* ------------------------------------- */
+
+.contact-content {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 40% info, 60% form */
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.contact-content .section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Blocchi Informazioni */
+.info-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #4FD1C5; /* Accento */
+    border-radius: 4px;
+}
+
+.info-block i {
+    font-size: 2em;
+    color: #2B6CB0;
+    margin-right: 20px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.info-block h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.info-block p, .info-block a {
+    margin: 0;
+    font-size: 0.95em;
+    color: #666;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.info-block a {
+    color: #2B6CB0;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.info-block a:hover {
+    color: #4FD1C5;
+}
+
+/* Stile Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Importante per padding e border */
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #4FD1C5;
+    outline: none;
+}
+
+.contact-form .btn-primary {
+    width: 100%;
+    padding: 15px 0;
+}
+
+/* ------------------------------------- */
+/* 📍 SEZIONE MAPPA */
+/* ------------------------------------- */
+
+.map-section {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.map-section .section-subtitle {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.map-intro {
+    text-align: center;
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Contenitore della mappa */
+.google-map-container {
+    width: 100%;
+    height: 450px; /* Altezza fissa per la mappa */
+    /* Lo stile della mappa viene gestito automaticamente dall'API */
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query per Mobile */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Una colonna su mobile */
+    }
+    
+    .contact-info {
+        order: 1; /* Sposta le info sopra il form su mobile, per visibilità immediata */
+    }
+    
+    .contact-form {
+        order: 2;
+    }
+    
+    .map-section {
+        padding-bottom: 0;
+    }
+    
+    .google-map-container {
+        height: 300px;
+    }
+}
+.google-map-container {
+    width: 100%;
+    height: 450px; /* Altezza fissa per il contenitore */
+    /* ... altri stili ... */
+}
+
+/* Regola aggiuntiva per la mappa su mobile (se non l'hai ancora) */
+@media (max-width: 768px) {
+    .google-map-container {
+        height: 300px; /* Mappa leggermente più corta su schermi piccoli */
+    }
+}
+/* ==================================== */
+/* 🏭 PAGINA LAVANDERIA (lavanderia.html) */
+/* ==================================== */
+
+/* Stile Hero Iniziale (uguale alle altre pagine) */
+.laundry-hero {
+    padding: 100px 0 50px;
+    background-color: #f4f4f4;
+}
+
+.laundry-hero .page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2B6CB0; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.laundry-hero .intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------- */
+/* 🔬 SEZIONE PROCESSO LAVAGGIO (Grid) */
+/* Riutilizza gran parte dello stile del .logistics-process */
+/* ------------------------------------- */
+
+.laundry-process {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.laundry-process .section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.laundry-process .section-subtitle i {
+    color: #4FD1C5;
+    margin-right: 15px;
+}
+
+/* Riutilizza .process-steps, .step, .icon-circle, .step-title, .step-description dalla logistica */
+
+
+/* ------------------------------------- */
+/* ♻️ SEZIONE QUALITÀ E SOSTENIBILITÀ (Grid Mista) */
+/* ------------------------------------- */
+
+.laundry-quality {
+    padding: 70px 0;
+    background-color: #f8f8f8;
+}
+
+.quality-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.quality-text {
+    flex: 1; /* Occupa il 50% */
+}
+
+.quality-image {
+    flex: 1; /* Occupa l'altro 50% */
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.quality-text .section-subtitle {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.quality-text .section-subtitle i {
+    color: #4FD1C5;
+    margin-right: 15px;
+}
+
+.quality-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.quality-text ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.quality-text ul li {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #444;
+}
+
+.quality-text ul li i {
+    color: #2B6CB0; /* Accento Blu */
+    margin-right: 10px;
+}
+
+/* Media Query per Mobile */
+@media (max-width: 768px) {
+    .quality-grid {
+        flex-direction: column; /* Impila testo e immagine */
+    }
+
+    .quality-text {
+        order: 2;
+    }
+    
+    .quality-image {
+        order: 1;
+        width: 100%;
+        margin-bottom: 20px;
+        min-height: 250px;
+    }
+
+    .quality-text .section-subtitle {
+        text-align: center; /* Centra il titolo su mobile */
+    }
+}
