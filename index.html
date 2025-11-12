@@ -205,17 +205,52 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navbar = document.querySelector('.navbar');
 
-  if (menuToggle && navbar) {
-    menuToggle.addEventListener('click', function() {
-      navbar.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
+  if (!menuToggle || !navbar) return;
+
+  // inizializza attributi accessibilità
+  menuToggle.setAttribute('aria-expanded', 'false');
+  navbar.setAttribute('aria-hidden', 'true');
+
+  menuToggle.addEventListener('click', function() {
+    const isActive = navbar.classList.toggle('active');
+
+    // toggle classe per bloccare scroll
+    document.body.classList.toggle('menu-open', isActive);
+
+    // aria
+    menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    navbar.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+
+    // icona
+    const icon = menuToggle.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('fa-bars', !isActive);
+      icon.classList.toggle('fa-times', isActive);
+    }
+
+    // Fallback: forziamo display se qualche regola CSS lo blocca
+    if (isActive) {
+      navbar.style.display = 'flex';
+    } else {
+      navbar.style.display = '';
+    }
+  });
+
+  // Chiudi il menu cliccando su un link (comportamento mobile comune)
+  navbar.addEventListener('click', function(e) {
+    if (e.target.tagName.toLowerCase() === 'a') {
+      navbar.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      navbar.style.display = '';
       const icon = menuToggle.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
-    });
-  }
+      if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navbar.setAttribute('aria-hidden', 'true');
+    }
+  });
 });
 </script>
+
 
 <!-- SCRIPT HEADER NASCONDIBILE -->
 <script>
