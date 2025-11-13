@@ -2059,49 +2059,111 @@ a:hover {
   flex: 1 1 auto;             /* permette al contenuto di occupare lo spazio rimanente */
 }
 
-/* --- MENU MOBILE --- */
+/* HEADER BASE */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 9999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo img {
+  height: 50px;
+}
+
+/* MENU MOBILE CHIUSO */
 .navbar {
   display: none;
   flex-direction: column;
   align-items: center;
-  background-color: white; /* o il colore del tuo header */
+  background: white;
+  width: 100%;
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
-  z-index: 9999;
   border-top: 1px solid #ddd;
   transition: all 0.3s ease;
 }
 
+/* MENU MOBILE APERTO */
 .navbar.active {
   display: flex;
 }
 
+/* LINK MENU */
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar ul li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 1rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar ul li a:hover {
+  background: #f5f5f5;
+}
+
+/* BOTTONE HAMBURGER */
 .menu-toggle {
   background: none;
   border: none;
   font-size: 1.8rem;
-  cursor: pointer;
   color: #333;
-  z-index: 10000;
+  cursor: pointer;
 }
 
+/* BLOCCO SCROLL QUANDO MENU APERTO */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* VERSIONE DESKTOP */
 @media (min-width: 992px) {
-  /* desktop */
   .menu-toggle {
     display: none;
   }
+
   .navbar {
     display: flex !important;
     flex-direction: row;
     position: static;
-    background: transparent;
+    justify-content: center;
     border: none;
   }
-}
 
-/* quando il menu è aperto, blocca lo scroll del body */
-body.menu-open {
-  overflow: hidden;
+  .navbar ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar ul li {
+    border: none;
+  }
+
+  .navbar ul li a {
+    padding: 0.5rem 0;
+  }
 }
