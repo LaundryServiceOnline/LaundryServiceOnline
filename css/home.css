@@ -2018,3 +2018,44 @@ a:hover {
     touch-action: none !important;
   }
 }
+/* Assicurati di non avere width/max-width qui:
+   lascia che il contenitore padre gestisca la larghezza della card */
+.product-card {
+  /* non impostare width o max-width qui se vuoi mantenere le dimensioni originali */
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;           /* importante: arrotonda anche l'immagine */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;     /* immagine sopra, contenuto sotto */
+}
+
+/* Contenitore immagine: non toccare la larghezza della card */
+.product-image-placeholder {
+  position: relative;
+  width: 100%;                /* occupa tutta la larghezza della card */
+  height: 240px;              /* -> regola solo l'altezza visibile dell'immagine */
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  flex: 0 0 auto;             /* non fa "scorrere" il contenuto verticale */
+}
+
+/* L'immagine riempie il box senza deformarsi e senza lasciare spazi bianchi */
+.product-image-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* riempie tutto il box, ritagliando se necessario */
+  display: block;
+}
+
+/* Contenuto della card rimane come prima (non cambiare larghezza) */
+.product-card-content {
+  padding: 16px;
+  text-align: center;
+  color: #333;
+  flex: 1 1 auto;             /* permette al contenuto di occupare lo spazio rimanente */
+}
+
