@@ -1986,38 +1986,38 @@ a:hover {
 }
 
 /* --- NAVBAR DESKTOP --- */
-@media (min-width: 992px) {
-  .navbar {
-    display: flex !important;
-    justify-content: center; /* centra i link sotto il logo */
-    flex-direction: row;
-    position: static; /* rimane sotto l'header-top */
-    background: transparent;
-    width: 100%;
-  }
-
-  .navbar ul {
+/* Nuova riga inferiore: Navbar */
+.header-bottom {
     display: flex;
-    gap: 2rem;
+    justify-content: center; /* Centra orizzontalmente la navbar */
+    padding: 15px 0 20px; 
+}
+
+/* La tua navbar originale e le sue proprietà */
+.navbar ul {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
+    display: flex;
+}
+.navbar {
+    /* Assicurati che il contenitore della navbar abbia una posizione per usare z-index */
+    position: relative; 
+    /* Imposta uno z-index superiore a quello del logo (che è 10) */
+    z-index: 15; 
+}
 
-  .navbar ul li {
-    border: none;
-  }
+/* Le regole di stile per <li> e <a> rimangono le stesse */
+.navbar ul li {
+    margin: 0 15px; /* Spazio uniforme tra i link */
+}
 
-  .navbar ul li a {
-    padding: 0.5rem 0;
-    text-decoration: none;
+.navbar ul li a {
     color: #333;
     font-weight: 600;
-  }
-
-  .menu-toggle {
-    display: none; /* nascondi hamburger su desktop */
-  }
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
 /* --- NAVBAR MOBILE --- */
