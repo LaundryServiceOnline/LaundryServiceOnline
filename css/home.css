@@ -1985,10 +1985,45 @@ a:hover {
   flex: 1 1 auto;             /* permette al contenuto di occupare lo spazio rimanente */
 }
 
-/* NAVBAR MOBILE */
+/* --- NAVBAR DESKTOP --- */
+@media (min-width: 992px) {
+  .navbar {
+    display: flex !important;
+    justify-content: center; /* centra i link sotto il logo */
+    flex-direction: row;
+    position: static; /* rimane sotto l'header-top */
+    background: transparent;
+    width: 100%;
+  }
+
+  .navbar ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar ul li {
+    border: none;
+  }
+
+  .navbar ul li a {
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+  }
+
+  .menu-toggle {
+    display: none; /* nascondi hamburger su desktop */
+  }
+}
+
+/* --- NAVBAR MOBILE --- */
 @media (max-width: 991px) {
   .navbar {
-    display: none;
+    display: none; /* di default nascosta */
     flex-direction: column;
     position: fixed;
     top: 70px; /* altezza header */
@@ -2005,9 +2040,15 @@ a:hover {
     display: flex;
   }
 
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
   .navbar ul li {
     margin: 1rem 0;
-    text-align: center;
   }
 
   .navbar ul li a {
@@ -2020,33 +2061,15 @@ a:hover {
     display: block;
     position: relative;
     z-index: 10000;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #333;
+    cursor: pointer;
   }
 }
 
-/* NAVBAR DESKTOP */
-@media (min-width: 992px) {
-  .navbar {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .navbar ul {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .navbar ul li {
-    margin: 0;
-    border: none;
-  }
-
-  .menu-toggle {
-    display: none;
-  }
+/* Blocca scroll quando il menu mobile è aperto */
+body.menu-open {
+  overflow: hidden;
 }
