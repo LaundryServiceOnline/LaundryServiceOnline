@@ -2060,110 +2060,42 @@ a:hover {
 }
 
 /* HEADER BASE */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-}
-
-.logo img {
-  height: 50px;
-}
-
-/* MENU MOBILE CHIUSO */
+/* FIX EMERGENZA VISIBILITÀ NAVBAR MOBILE */
 .navbar {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  border-top: 1px solid #ddd;
-  transition: all 0.3s ease;
+  display: none !important;
 }
 
-/* MENU MOBILE APERTO */
 .navbar.active {
-  display: flex;
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: 70px; /* altezza del tuo header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999 !important;
 }
 
-/* LINK MENU */
 .navbar ul {
   list-style: none;
-  padding: 0;
   margin: 0;
-  width: 100%;
+  padding: 0;
 }
 
 .navbar ul li {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #eee;
+  margin: 1rem 0;
 }
 
 .navbar ul li a {
-  display: block;
-  padding: 1rem;
-  color: #333;
   text-decoration: none;
-  font-weight: 600;
-}
-
-.navbar ul li a:hover {
-  background: #f5f5f5;
-}
-
-/* BOTTONE HAMBURGER */
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 1.8rem;
   color: #333;
-  cursor: pointer;
+  font-size: 1.4rem;
 }
 
-/* BLOCCO SCROLL QUANDO MENU APERTO */
-body.menu-open {
-  overflow: hidden;
-}
-
-/* VERSIONE DESKTOP */
-@media (min-width: 992px) {
-  .menu-toggle {
-    display: none;
-  }
-
-  .navbar {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    justify-content: center;
-    border: none;
-  }
-
-  .navbar ul {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .navbar ul li {
-    border: none;
-  }
-
-  .navbar ul li a {
-    padding: 0.5rem 0;
-  }
+.menu-toggle {
+  position: relative;
+  z-index: 100000;
 }
