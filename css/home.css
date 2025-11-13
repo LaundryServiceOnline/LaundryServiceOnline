@@ -1990,7 +1990,9 @@ a:hover {
 .header-bottom {
     display: flex;
     justify-content: center; /* Centra orizzontalmente la navbar */
+    width: 100%; /* Assicurati che il contenitore occupi tutta la larghezza */
     padding: 15px 0 20px; 
+    box-sizing: border-box; /* Per includere padding nella larghezza */
 }
 
 /* La tua navbar originale e le sue proprietà */
@@ -2001,10 +2003,10 @@ a:hover {
     display: flex;
 }
 .navbar {
-    /* Assicurati che il contenitore della navbar abbia una posizione per usare z-index */
-    position: relative; 
-    /* Imposta uno z-index superiore a quello del logo (che è 10) */
-    z-index: 15; 
+    display: flex; /* Aggiungi questo per far sì che ul si comporti correttamente */
+    justify-content: center; /* Centra il contenuto della navbar */
+    position: relative;
+    z-index: 15;
 }
 
 /* Le regole di stile per <li> e <a> rimangono le stesse */
