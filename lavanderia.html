@@ -172,22 +172,125 @@
             <div class="footer-col footer-about">
                 <div class="footer-logo">LaundryService</div>
                 <p class="desc">
-                    Lavanderia industriale e noleggio biancheria per alberghi,
-                    strutture ricettive e sanitarie a Napoli e in Campania.
+                    Noleggio e lavaggio biancheria e tovagliati da camera, da sala e da cerimonia per:<br />
+                    &gt; Alberghi,<br /> &gt; Hotel, <br />&gt; Ristoranti, <br />&gt; Agriturismi, <br />&gt; Bed &amp; Breakfast.
                 </p>
+                <hr />
                 <p>
-                    Via Coree di sotto 17<br>
-                    80016 Marano di Napoli (NA)
+                    Via Coree di sotto n°17 <br /> 80016, Marano di Napoli, (NA)<br />Italia
                 </p>
                 <p>P.IVA: 07337951219</p>
             </div>
-        </div>
+
+            <div class="footer-col">
+                <h3>Link veloci</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="servizi.html">Servizi</a></li>
+                    <li><a href="Logistica.html">Logistica</a></li>
+                    <li><a href="lavanderia.html">Lavanderia</a></li>
+                    <li><a href="Catalogo.html">Catalogo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contatti</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> <a href="tel:3332523860">3332523860</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:laundry.lavanderiaenoleggi@gmail.com">laundry.lavanderiaenoleggi@gmail.com</a></li>
+                    <li><i class="fas fa-clock"></i> Lun-Ven: 9:00-13:00 / 14:00-17:00</li>
+                </ul>
+            </div>
 
         <div class="footer-bottom">
             <p>© 2025 LaundryService. Tutti i diritti riservati.</p>
+
+            <div class="footer-bottom-right">
+                <span>Sito prodotto da:</span><br />
+                <a href="link megi" target="_blank" rel="noopener">
+                    <img src="img/Megi.png" alt="Logo Produttore" class="producer-logo" />
+                </a>
+            </div>
+
+            <div class="legal-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookie.html">Cookie Policy</a>
+            </div>
         </div>
     </div>
 </footer>
 
+<!-- SCRIPT MENU -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbar = document.querySelector('.navbar');
+
+  if (!menuToggle || !navbar) return;
+
+  // inizializza attributi accessibilità
+  menuToggle.setAttribute('aria-expanded', 'false');
+  navbar.setAttribute('aria-hidden', 'true');
+
+  menuToggle.addEventListener('click', function() {
+    const isActive = navbar.classList.toggle('active');
+
+    // toggle classe per bloccare scroll
+    document.body.classList.toggle('menu-open', isActive);
+
+    // aria
+    menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    navbar.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+
+    // icona
+    const icon = menuToggle.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('fa-bars', !isActive);
+      icon.classList.toggle('fa-times', isActive);
+    }
+
+    // Fallback: forziamo display se qualche regola CSS lo blocca
+    if (isActive) {
+      navbar.style.display = 'flex';
+    } else {
+      navbar.style.display = '';
+    }
+  });
+
+  // Chiudi il menu cliccando su un link (comportamento mobile comune)
+  navbar.addEventListener('click', function(e) {
+    if (e.target.tagName.toLowerCase() === 'a') {
+      navbar.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      navbar.style.display = '';
+      const icon = menuToggle.querySelector('i');
+      if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navbar.setAttribute('aria-hidden', 'true');
+    }
+  });
+});
+</script>
+
+
+<!-- SCRIPT HEADER NASCONDIBILE -->
+<script>
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        header.style.transform = 'translateY(0)';
+    }
+    header.style.transition = 'transform 0.3s ease';
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+</script>
 </body>
 </html>
+
