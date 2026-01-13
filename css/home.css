@@ -1149,6 +1149,10 @@ a:hover {
     background-image: url('../img/serv1.webp'); /* Percorso immagine Hotel */
 }
 
+.service-band-courtesy::after {
+    background-image: url('../img/kitkortesia.jpg'); /* Percorso immagine Hotel */
+}
+
 .service-band-food::after {
     background-image: url('../img/sala-punta-romana.jpg'); /* Percorso immagine Ristorante */
 }
