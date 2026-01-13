@@ -1148,7 +1148,6 @@ a:hover {
 .service-band-hotel::after {
     background-image: url('../img/serv1.webp'); /* Percorso immagine Hotel */
 }
-
 .service-band-courtesy::after {
     background-image: url('../img/kitkortesia.jpg'); /* Percorso immagine Hotel */
 }
